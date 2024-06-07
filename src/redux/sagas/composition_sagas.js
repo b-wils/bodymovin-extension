@@ -89,6 +89,7 @@ function *checkTemplateValidation(compData) {
 }
 
 function *startRender() {
+	// debugger;
 	let compData
 	while(true) {
 		const comp = yield select(getRenderComposition)

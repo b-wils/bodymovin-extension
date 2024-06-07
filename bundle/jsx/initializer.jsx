@@ -6,6 +6,8 @@
 // Recreating the __bodymovin object every time to avoid usage of previous instance
 $.__bodymovin = {esprima:{}};
 
+alert('server loaded?');
+$.writeln('hello?? works!!')
 
 //  Does not work with `new funcA.bind(thisArg, args)`
 if (!Function.prototype.bm_bind) (function(){

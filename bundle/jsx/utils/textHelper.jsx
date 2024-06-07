@@ -53,6 +53,7 @@ $.__bodymovin.bm_textHelper = (function () {
     }
     
     function exportTextDocumentData(layerInfo, data, frameRate, stretch) {
+        
         var duplicatedLayerInfo = layerInfo.duplicate();
         duplicatedLayerInfo.locked = false;
         removeLayerAnimators(duplicatedLayerInfo);
@@ -66,9 +67,13 @@ $.__bodymovin.bm_textHelper = (function () {
         data.k = arr;
 
         if (settingsHelper.shouldExportEssentialProperties()) {
+            bm_eventDispatcher.log('shouldExportEssentialProperties');
             if (settingsHelper.shouldExportEssentialPropertiesAsSlots()) {
+                bm_eventDispatcher.log('shouldExportEssentialPropertiesAsSlots');
                 var essentialPropId = essentialPropertiesHelper.searchPropertyId(layerInfo.property("Source Text"));
                 if (essentialPropId) {
+                    // alert('set sid3');
+                    bm_eventDispatcher.log('set sid3');
                     data.sid = essentialPropId;
                 }
             } else {
@@ -220,6 +225,9 @@ $.__bodymovin.bm_textHelper = (function () {
     }
     
     function exportText(layerInfo, layerOb, frameRate) {
+        debugger;
+        // alert('exportText123');
+        bm_eventDispatcher.log('exportText');
         layerOb.t = {
             d: {},
             p: {},

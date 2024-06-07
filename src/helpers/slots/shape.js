@@ -118,9 +118,9 @@ const convertMergePath = () => {
   // Nothing to convert on merge paths
 }
 
-const convertGeneric = (shape, props, properties) => {
-  console.log('GENERIC', shape)
-}
+// const convertGeneric = (shape, props, properties) => {
+//   console.log('GENERIC', shape)
+// }
 
 const shapePropConverters = {
   [shapeTypes.RECTANGLE]:  convertRectangle,

@@ -156,6 +156,7 @@ $.__bodymovin.bm_essentialPropertiesHelper = (function () {
             property: property,
             id: property.name,
           }
+          bm_eventDispatcher.log(property.matchName);
           // TODO: check if there is a better way to identify type
           if (property.matchName === 'ADBE Layer Source Alternate') {
             // It's a layer source
@@ -165,7 +166,8 @@ $.__bodymovin.bm_essentialPropertiesHelper = (function () {
             propData.type = 'group';
             propData.properties = [];
             iterateProperty(property, frameRate, propData.properties);
-          } else if (property.matchName === 'ADBE Text Document') {
+          } else if (property.matchName === 'ADBE Text Document' || 
+                     property.matchName === 'ADBE EP Text Document') {
             propData.type = 'property';
             propData.val = {};
             var textDocumentSource = property.essentialPropertySource
@@ -183,6 +185,8 @@ $.__bodymovin.bm_essentialPropertiesHelper = (function () {
               propData.val = keyframeHelper.exportKeyframes(property, frameRate, 1);
             }
           }
+          bm_eventDispatcher.log('addProp');
+          // bm_eventDispatcher.log(propData);
           properties.push(propData);
         }
     }
@@ -280,24 +284,29 @@ $.__bodymovin.bm_essentialPropertiesHelper = (function () {
 
   // Traverses and returns a dictionary with the essential properties
   function exportProperties() {
+    bm_eventDispatcher.log('exportProperties');
     if (!settingsHelper.shouldExportEssentialPropertiesAsSlots()) {
       return undefined;
     }
     exportedProps = {};
     var count = 0;
     var prop;
+    // bm_eventDispatcher.log(rootProperties);
     for (var i = 0; i < rootProperties.length; i += 1) {
       if (rootProperties[i].type === 'property') {
         prop = {
           p: rootProperties[i].val,
         }
         rootProperties[i].prop = prop;
+        bm_eventDispatcher.log('set prop slot');
+        bm_eventDispatcher.log(prop);
         exportedProps[rootProperties[i].id] = prop;
         count += 1;
       } else if (rootProperties[i].type === 'source') {
         // adding counter but skipping the prop creating since it will be set by the source itself
         count += 1;
       } else if (rootProperties[i].type === 'group' && rootProperties[i].properties.length > 0) {
+        bm_eventDispatcher.log('set group slot');
         prop = {
           p: rootProperties[i].properties[0].val,
         }
@@ -309,6 +318,8 @@ $.__bodymovin.bm_essentialPropertiesHelper = (function () {
     if (count === 0) {
       return undefined;
     }
+    bm_eventDispatcher.log('exportedProps');
+    bm_eventDispatcher.log(exportedProps);
     return exportedProps;
   }
 

@@ -577,6 +577,8 @@ $.__bodymovin.bm_sourceHelper = (function () {
         }
         var essentialPropertyId = essentialPropertiesHelper.searchAsset(currentSourceData, currentSavingAsset);
         if (essentialPropertyId) {
+            alert('set sid2');
+            bm_eventDispatcher.log('set sid2');
             currentSavingAsset.sid = essentialPropertyId;
         }
         assetsArray.push(currentSavingAsset);

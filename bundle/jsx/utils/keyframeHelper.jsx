@@ -444,7 +444,12 @@ $.__bodymovin.bm_keyframeHelper = (function () {
             if (settingsHelper.shouldExportEssentialPropertiesAsSlots()) {
                 var essentialPropId = essentialPropertiesHelper.searchPropertyId(prop);
                 if (essentialPropId) {
+                    alert('set sid');
+                    bm_eventDispatcher.log('set sid');
+
+                    // debugger;
                     returnOb.sid = essentialPropId;
+                    // alert(returnOb);
                 }
             } else {
                 var essentialProperty = essentialPropertiesHelper.searchProperty(prop);

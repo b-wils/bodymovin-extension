@@ -4,7 +4,7 @@ import convertAnimation from './slots/converter';
 
 const createSlots = async (origin, destination, fileName, prettyPrint) => {
 	var path = origin + getSimpleSeparator() + fileName + '.json';
-	var destination = destination + getSimpleSeparator() + fileName + '.json';
+	destination = destination + getSimpleSeparator() + fileName + '.json';
 	try {
 		const jsonData = await loadBodymovinFileData(path);
 		convertAnimation(jsonData);

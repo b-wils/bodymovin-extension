@@ -50,7 +50,7 @@ function Main_header(props) {
                     <BaseHeader />
 				</div>
                 <div className={css(styles.buttons_container)}>
-                    <BaseButton text='Render' type='green' classes={styles.button} disabled={!props.canRender} onClick={props.startRender} />
+                    <BaseButton text='Render Test' type='green' classes={styles.button} disabled={!props.canRender} onClick={props.startRender} />
                     <div className={css(styles.buttons_group)}>
                         <BaseButton
                             text='Apply Settings'
